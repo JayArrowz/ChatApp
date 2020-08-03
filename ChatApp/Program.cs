@@ -22,10 +22,13 @@ namespace ChatApp
             await server.BindAsync();
             var channel = await client.ConnectAsync();
 
-            var testMessage = Encoding.UTF8.GetBytes("Test message");
-            var buffer = Unpooled.WrappedBuffer(testMessage);
-            await channel.WriteAndFlushAsync(buffer);
-            Console.ReadLine();
+            while (true)
+            {
+                Console.WriteLine("Enter message to send: ");
+                var testMessage = Encoding.UTF8.GetBytes(Console.ReadLine());
+                var buffer = Unpooled.WrappedBuffer(testMessage);
+                await channel.WriteAndFlushAsync(buffer);
+            }
         }
     }
 }
