@@ -24,8 +24,8 @@ namespace ChatApp
 
         public async Task BindAsync()
         {
-            _eventLoop = new SingleThreadEventLoop();
-
+            _eventLoop = new MultithreadEventLoopGroup();
+            _childEventLoop = new MultithreadEventLoopGroup();
             var bootstrap = new ServerBootstrap();
             bootstrap.Group(_eventLoop, _childEventLoop)
                 .Channel<TcpServerSocketChannel>()
