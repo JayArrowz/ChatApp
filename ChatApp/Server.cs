@@ -13,8 +13,8 @@ namespace ChatApp
     class Server
     {
         private IChannel _channel;
-        private IEventLoop _eventLoop;
-        private IEventLoop _childEventLoop;
+        private MultithreadEventLoopGroup _eventLoop;
+        private MultithreadEventLoopGroup _childEventLoop;
         private readonly IPEndPoint _endPoint;
 
         public Server(IPEndPoint endPoint)
